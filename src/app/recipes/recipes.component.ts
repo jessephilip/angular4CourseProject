@@ -9,11 +9,10 @@ import { Recipe } from './recipe.model';
 })
 export class RecipesComponent implements OnInit {
 
+	private selectedRecipe: Recipe;
+
 	constructor() { }
 
-	ngOnInit() {
-	}
-
-	selectedRecipe:Recipe;
+	ngOnInit() { }
 
 }

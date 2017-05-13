@@ -9,17 +9,20 @@ import { Ingredient } from '../shared/ingredient.model';
 })
 export class ShoppingListComponent implements OnInit {
 
-	private _ingredients:Ingredient[] = [
+	private _ingredients: Ingredient[] = [
 		new Ingredient('Flour', 2),
 		new Ingredient('Salt', 3),
 		new Ingredient('Water', 2)
 	];
-	public get ingredients():Ingredient[] { return this._ingredients; }
-	public set ingredients(ingredients:Ingredient[]) { this._ingredients = ingredients; }
+	public get ingredients(): Ingredient[] { return this._ingredients; }
+	public set ingredients(ingredients: Ingredient[]) { this._ingredients = ingredients; }
 
 	constructor() { }
 
-	ngOnInit() {
+	ngOnInit() { }
+
+	private receive(ingredient) {
+		this.ingredients.push(ingredient);
 	}
 
 }

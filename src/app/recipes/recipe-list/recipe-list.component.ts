@@ -9,23 +9,22 @@ import { Recipe } from '../recipe.model';
 })
 export class RecipeListComponent implements OnInit {
 
+	@Output() recipeWasSelected = new EventEmitter<Recipe>();
 
 	// notice the dual way of saying an array of recipes
-	private _recipes:Recipe[] = [
+	private _recipes: Recipe[] = [
 		new Recipe('Dog Treat', 'A treat for dogs', 'http://placekitten.com/150/150'),
 		new Recipe('Cat Treat', 'A treat for cats', 'http://placekitten.com/150/150'),
 		new Recipe('Turtle Treat', 'A treat for turtles', 'http://placekitten.com/150/150')
 	];
-	public get recipes():Array<Recipe> { return this._recipes; };
-	public set recipes(recipes:Array<Recipe>) { this._recipes = recipes; }
+	public get recipes(): Array<Recipe> { return this._recipes; };
+	public set recipes(recipes: Array<Recipe>) { this._recipes = recipes; }
 
 	constructor() { }
 
 	ngOnInit() { }
 
-	@Output() recipeWasSelected = new EventEmitter<Recipe>();
-
-	onRecipeSelected(recipe:Recipe) {
+	onRecipeSelected(recipe: Recipe) {
 		this.recipeWasSelected.emit(recipe);
 	}
 
