@@ -1,28 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingService } from 'app/shopping-list/shopping.service';
 
 @Component({
 	selector: 'app-shopping-list',
-	templateUrl: './shopping-list.component.html',
-	styleUrls: ['./shopping-list.component.scss']
+	styleUrls: ['./shopping-list.component.scss'],
+	templateUrl: './shopping-list.component.html'
 })
 export class ShoppingListComponent implements OnInit {
+	private ingredients: Ingredient[];
 
-	private _ingredients: Ingredient[] = [
-		new Ingredient('Flour', 2),
-		new Ingredient('Salt', 3),
-		new Ingredient('Water', 2)
-	];
-	public get ingredients(): Ingredient[] { return this._ingredients; }
-	public set ingredients(ingredients: Ingredient[]) { this._ingredients = ingredients; }
+	constructor (private shoppingService: ShoppingService) { }
 
-	constructor() { }
-
-	ngOnInit() { }
-
-	private receive(ingredient) {
-		this.ingredients.push(ingredient);
+	ngOnInit () {
+		this.ingredients = this.shoppingService.ingredients;
 	}
 
 }
